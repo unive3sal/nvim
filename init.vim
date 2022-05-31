@@ -7,7 +7,6 @@ endif
 
 "-------------Basic settings-------------
 syntax on
-set t_Co=256
 set number
 set relativenumber
 set hlsearch
@@ -50,13 +49,79 @@ noremap ; :
 " ==================== Install Plugins with Vim-Plug ====================
 call plug#begin('$HOME/.config/nvim/plugged')
 
+" Color theme
+Plug 'NLKNguyen/papercolor-theme'
+
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Lsp
 Plug 'neovim/nvim-lspconfig'
 
+" nvim-cmp
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+
+" nvim-tree
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 " Undo Tree
 Plug 'mbbill/undotree'
 
+" indent-blankline
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+" fuzzy find
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
+
+" ================nvim-tree===============
+nnoremap <leader>e :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+" More available functions:
+" NvimTreeOpen
+" NvimTreeClose
+" NvimTreeFocus
+" NvimTreeFindFileToggle
+" NvimTreeResize
+" NvimTreeCollapse
+" NvimTreeCollapseKeepBuffers
+
+set termguicolors " this variable must be enabled for colors to be applied properly
+
+" a list of groups can be found at `:help nvim_tree_highlight`
+highlight NvimTreeFolderIcon guibg=blue
+lua require('nvim-tree').setup()
+
+" ===============lsp============
+lua require('lua/nvim-lspconfig')
+
+" ==============snip=============
+set completeopt=menu,menuone,noselect
+lua require('lua/nvim-snip')
+
+" =============Treesitter========
+lua require('lua/nvim-treesitter')
+"
+" =============indent-blankline=========
+lua require('lua/indent-blankline')
+
+" ============telescope==========
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+" ================set colorscheme===========
+set t_Co=256
+set background=light
+colorscheme PaperColor
