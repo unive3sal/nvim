@@ -45,6 +45,7 @@ tnoremap <C-N> <C-\><C-N>
 " ==================== Basic Mappings ====================
 let mapleader=","
 noremap ; :
+nnoremap <leader><space> :nohlsearch<CR>
 
 " ==================== Install Plugins with Vim-Plug ====================
 call plug#begin('$HOME/.config/nvim/plugged')
@@ -103,17 +104,17 @@ highlight NvimTreeFolderIcon guibg=blue
 lua require('nvim-tree').setup()
 
 " ===============lsp============
-lua require('lua/nvim-lspconfig')
+lua require('nvim-lspconfig')
 
 " ==============snip=============
 set completeopt=menu,menuone,noselect
-lua require('lua/nvim-snip')
+lua require('nvim-snip')
 
 " =============Treesitter========
-lua require('lua/nvim-treesitter')
-"
+lua require('treesitter-config')
+
 " =============indent-blankline=========
-lua require('lua/indent-blankline')
+lua require('indent-blankline')
 
 " ============telescope==========
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
