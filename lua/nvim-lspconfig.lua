@@ -54,10 +54,10 @@ require('lspconfig')['clangd'].setup {
   cmd = {
     'clangd',
     '--background-index',
-    '--query-driver="/app/vbuild/RHEL7-x86_64/clang/latest/bin/clang, \
-                     /app/vbuild/RHEL7-x86_64/clang/latest/bin/clang++, \
-                     /app/vbuild/RHEL7-x86_64/gcc/latest/bin/gcc, \
-                     /app/vbuild/RHEL7-x86_64/gcc/latest/bin/g++"',
+    '--query-driver="/usr/bin/clang, \
+                     /usr/bin/clang++, \
+                     /usr/bin/gcc, \
+                     /usr/bin/g++"',
     '--clang-tidy',
     '--all-scopes-completion',
     '--completion-style=detailed',
