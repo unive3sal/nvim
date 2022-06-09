@@ -33,15 +33,40 @@ end
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    },
-    capabilities = capabilities
-  }
-end
+-- local servers = { 'clangd' }
+-- for _, lsp in pairs(servers) do
+--   require('lspconfig')[lsp].setup {
+--     on_attach = on_attach,
+--     flags = {
+--       -- This will be the default in neovim 0.7+
+--       debounce_text_changes = 150,
+--     },
+--     capabilities = capabilities
+--   }
+-- end
+require('lspconfig')['clangd'].setup {
+  on_attach = on_attach,
+  flags = {
+    -- This will be the default in neovim 0.7+
+    debounce_text_changes = 150,
+  },
+  capabilities = capabilities,
+  cmd = {
+    'clangd',
+    '--background-index',
+    '--query-driver="/app/vbuild/RHEL7-x86_64/clang/latest/bin/clang, \
+                     /app/vbuild/RHEL7-x86_64/clang/latest/bin/clang++, \
+                     /app/vbuild/RHEL7-x86_64/gcc/latest/bin/gcc, \
+                     /app/vbuild/RHEL7-x86_64/gcc/latest/bin/g++"',
+    '--clang-tidy',
+    '--all-scopes-completion',
+    '--completion-style=detailed',
+    '--header-insertion-decorators',
+    '--header-insertion=iwyu',
+    '--pch-storage=memory',
+    '--enable-config',
+    '--log=verbose'
+  },
+  filetypes = {"c", "cpp", "objc", "objcpp"}
+}
 

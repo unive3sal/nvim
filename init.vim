@@ -41,6 +41,7 @@ set colorcolumn=100
 
 " ==================== Terminal Behaviors ====================
 tnoremap <C-N> <C-\><C-N>
+tnoremap <C-O> <C-\><C-N><C-O>
 
 " ==================== Basic Mappings ====================
 let mapleader=","
