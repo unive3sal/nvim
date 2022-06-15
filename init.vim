@@ -53,6 +53,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 
 " Color theme
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'morhetz/gruvbox'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -125,5 +126,7 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " ================set colorscheme===========
 set t_Co=256
+set termguicolors
 set background=light
-colorscheme PaperColor
+colorscheme gruvbox
+highlight Normal guibg=NONE ctermbg=None
