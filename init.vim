@@ -90,6 +90,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
+" git
+Plug 'f-person/git-blame.nvim'
+
 call plug#end()
 
 " ================nvim-tree===============
