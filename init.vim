@@ -135,5 +135,5 @@ set t_Co=256
 set termguicolors
 set background=light
 colorscheme onehalflight
-let g:airline_theme='onehalfdark'
+let g:airline_theme='papercolor'
 highlight Normal guibg=NONE ctermbg=None
