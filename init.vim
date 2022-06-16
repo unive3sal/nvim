@@ -133,6 +133,10 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
+" ==============git blame==========
+let g:gitblame_enabled = 1
+let g:gitblame_message_template = '<author> • <date> • <summary> • <sha>'
+
 " ================set colorscheme===========
 set t_Co=256
 set termguicolors
