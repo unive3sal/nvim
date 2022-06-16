@@ -54,6 +54,12 @@ call plug#begin('$HOME/.config/nvim/plugged')
 " Color theme
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -128,5 +134,6 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 set t_Co=256
 set termguicolors
 set background=light
-colorscheme gruvbox
+colorscheme onehalflight
+let g:airline_theme='onehalfdark'
 highlight Normal guibg=NONE ctermbg=None
