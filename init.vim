@@ -16,7 +16,7 @@ set autoindent
 set copyindent
 set expandtab
 set shiftround
-set shiftwidth=2
+set shiftwidth=4
 set smarttab
 set tabstop=4
 set incsearch
@@ -93,6 +93,19 @@ Plug 'nvim-telescope/telescope.nvim'
 " git
 Plug 'f-person/git-blame.nvim'
 
+" highlight yank
+Plug 'machakann/vim-highlightedyank'
+
+" pairs & bracket
+Plug 'jiangmiao/auto-pairs'
+Plug 'luochen1990/rainbow'
+
+" clipboard
+Plug 'AckslD/nvim-neoclip.lua'
+
+" tmux
+Plug 'aserowy/tmux.nvim'
+
 call plug#end()
 
 " ================nvim-tree===============
@@ -127,6 +140,12 @@ lua require('treesitter-config')
 " =============indent-blankline=========
 lua require('indent-blankline')
 
+" ===========neoclip===========
+lua require('neoclip-config')
+
+" ==========tmux========
+lua require('nvim-tmux-config')
+
 " ============telescope==========
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -134,7 +153,7 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " ==============git blame==========
-let g:gitblame_enabled = 1
+let g:gitblame_enabled = 0
 let g:gitblame_message_template = '<author> • <date> • <summary> • <sha>'
 nnoremap <leader>g :GitBlameToggle<CR>
 
@@ -145,3 +164,6 @@ set background=light
 colorscheme onehalflight
 let g:airline_theme='papercolor'
 highlight Normal guibg=NONE ctermbg=None
+
+" ==============pairs & bracket========
+let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
