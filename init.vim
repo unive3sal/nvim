@@ -136,6 +136,7 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 " ==============git blame==========
 let g:gitblame_enabled = 1
 let g:gitblame_message_template = '<author> • <date> • <summary> • <sha>'
+nnoremap <leader>g :GitBlameToggle<CR>
 
 " ================set colorscheme===========
 set t_Co=256
