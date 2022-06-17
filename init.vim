@@ -47,6 +47,8 @@ tnoremap <C-O> <C-\><C-N><C-O>
 let mapleader=","
 noremap ; :
 nnoremap <leader><space> :nohlsearch<CR>
+" Copy to system clipboard
+vnoremap Y "+y
 
 " ==================== Install Plugins with Vim-Plug ====================
 call plug#begin('$HOME/.config/nvim/plugged')
