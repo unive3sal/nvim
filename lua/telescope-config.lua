@@ -45,7 +45,7 @@ require('telescope').setup{
     },
     buffers = {
       theme = "dropdown"
-    }
+    },
     help_tags = {
       theme = "dropdown"
     }
