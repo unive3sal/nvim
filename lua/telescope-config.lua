@@ -8,10 +8,10 @@ require('telescope').setup{
         prompt_position = "top"
       },
       center = {
-        height = 0.8,
-        preview_cutoff = 60,
+        height = 0.75,
+        preview_cutoff = 40,
         prompt_position = "top",
-        width = 0.8
+        width = 0.75
       },
       cursor = {
         height = 0.9,
@@ -31,6 +31,10 @@ require('telescope').setup{
         width = 0.8
       }
     },
+    -- path display
+    path_display = {"smart"},
+    -- file ignore
+    file_ignore_patterns = {"%.o", "compile_commands.json", "Makefile"},
   },
   pickers = {
     find_files = {
@@ -38,6 +42,12 @@ require('telescope').setup{
     },
     live_grep = {
       theme = "dropdown",
+    },
+    buffers = {
+      theme = "dropdown"
+    }
+    help_tags = {
+      theme = "dropdown"
     }
   },
   extensions = {
