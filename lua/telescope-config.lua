@@ -48,6 +48,9 @@ require('telescope').setup{
     },
     help_tags = {
       theme = "dropdown"
+    },
+    oldfiles = {
+      theme = "dropdown"
     }
   },
   extensions = {
