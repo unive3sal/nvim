@@ -171,3 +171,6 @@ highlight Normal guibg=NONE ctermbg=None
 
 " ==============pairs & bracket========
 let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+
+" ==============clangd=============
+nnoremap <leader>sw :ClangdSwitchSourceHeader<cr>
