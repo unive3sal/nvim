@@ -93,7 +93,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 " git
-Plug 'f-person/git-blame.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 " highlight yank
 Plug 'machakann/vim-highlightedyank'
@@ -107,6 +107,9 @@ Plug 'AckslD/nvim-neoclip.lua'
 
 " tmux
 Plug 'aserowy/tmux.nvim'
+
+" tabline
+Plug 'crispgm/nvim-tabline'
 
 call plug#end()
 
@@ -156,10 +159,11 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fo <cmd>lua require('telescope.builtin').oldfiles()<cr>
 
-" ==============git blame==========
-let g:gitblame_enabled = 0
-let g:gitblame_message_template = '<author> • <date> • <summary> • <sha>'
-nnoremap <leader>g :GitBlameToggle<CR>
+" ==============git==========
+lua require('gitsigns-config')
+
+"==============nvim-tabline========
+lua require('tabline').setup({})
 
 " ================set colorscheme===========
 set t_Co=256
