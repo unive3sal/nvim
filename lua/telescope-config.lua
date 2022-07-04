@@ -1,4 +1,7 @@
-require('telescope').setup{
+local telescope = require("telescope")
+local actions = require("telescope-live-grep-args.actions")
+
+telescope.setup{
   defaults = {
     -- scope window width
     layout_config = {
@@ -54,6 +57,16 @@ require('telescope').setup{
     }
   },
   extensions = {
-    -- ...
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      mappings = {
+        i = {
+          ["<C-k>"] = actions.quote_prompt(),
+          ["<C-l>g"] = actions.quote_prompt({ postfix = ' --iglob ' }),
+          ["<C-l>t"] = actions.quote_prompt({ postfix = ' -t' }),
+        }
+      },
+      theme = "dropdown"
+    }
   }
 }
