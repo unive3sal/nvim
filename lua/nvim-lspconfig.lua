@@ -53,18 +53,15 @@ require('lspconfig')['clangd'].setup {
   capabilities = capabilities,
   cmd = {
     'clangd',
-    '--background-index',
-    '--query-driver="/usr/bin/clang, \
-                     /usr/bin/clang++, \
-                     /usr/bin/gcc, \
-                     /usr/bin/g++"',
+    '--query-driver="/usr/bin/clang*, \
+                     /usr/bin/gcc*, \
+                     /usr/bin/g++*"',
     '--clang-tidy',
     '--all-scopes-completion',
     '--completion-style=detailed',
     '--header-insertion-decorators',
     '--header-insertion=iwyu',
     '--pch-storage=memory',
-    '--enable-config',
     '--log=verbose'
   },
   filetypes = {"c", "cpp", "objc", "objcpp"}
