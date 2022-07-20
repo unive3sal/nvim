@@ -53,9 +53,8 @@ require('lspconfig')['clangd'].setup {
   capabilities = capabilities,
   cmd = {
     'clangd',
-    '--query-driver="/usr/bin/clang*, \
-                     /usr/bin/gcc*, \
-                     /usr/bin/g++*"',
+    '--query-driver=/usr/bin/clang++*, \
+                    /usr/bin/g++*',
     '--clang-tidy',
     '--all-scopes-completion',
     '--completion-style=detailed',
