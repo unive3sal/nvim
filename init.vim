@@ -29,7 +29,6 @@ set splitright
 set splitbelow
 set cursorline
 set showcmd
-set mouse=a
 silent !mkdir -p $HOME/.config/nvim/tmp/backup
 silent !mkdir -p $HOME/.config/nvim/tmp/undo
 set backupdir=$HOME/.config/nvim/tmp/backup,.
