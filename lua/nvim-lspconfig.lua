@@ -49,48 +49,70 @@ local lspconfig = require('lspconfig')
 
 -- clangd
 lspconfig.clangd.setup {
-  on_attach = on_attach,
-  flags = {
-    -- This will be the default in neovim 0.7+
-    debounce_text_changes = 150,
-  },
-  capabilities = capabilities,
-  cmd = {
-    'clangd',
-    '--query-driver=/usr/bin/clang++*, \
+    on_attach = on_attach,
+    flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+    cmd = {
+        'clangd',
+        '--query-driver=/usr/bin/clang++*, \
                     /usr/bin/g++*',
-    '--clang-tidy',
-    '--all-scopes-completion',
-    '--completion-style=detailed',
-    '--header-insertion-decorators',
-    '--header-insertion=iwyu',
-    '--pch-storage=memory',
-    '--log=verbose'
-  },
-  filetypes = {"c", "cpp", "objc", "objcpp"}
+        '--clang-tidy',
+        '--all-scopes-completion',
+        '--completion-style=detailed',
+        '--header-insertion-decorators',
+        '--header-insertion=iwyu',
+        '--pch-storage=memory',
+        '--log=verbose'
+    },
+    filetypes = {"c", "cpp", "objc", "objcpp"}
 }
 
 -- lua
-lspconfig.sumneko_lua.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
+lspconfig.lua_ls.setup {
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'},
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
     },
-  },
+}
+
+-- rust
+lspconfig.rust_analyzer.setup {
+    settings = {
+        ['rust-analyzer'] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        },
+    },
 }
 
