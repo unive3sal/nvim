@@ -56,6 +56,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 
 " Color theme
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'Shatur/neovim-ayu'
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -171,8 +172,8 @@ lua require('tabline').setup({})
 " ================set colorscheme===========
 set t_Co=256
 set termguicolors
-set background=light
-colorscheme onehalflight
+set background=dark
+colorscheme ayu
 let g:airline_theme='papercolor'
 highlight Normal guibg=NONE ctermbg=None
 
