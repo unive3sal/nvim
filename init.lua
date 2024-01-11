@@ -17,8 +17,10 @@ end
 bootstrap_pckr()
 
 require('pckr').add{
-  -- theme
+  -- appearance
   'Shatur/neovim-ayu';
+  'nvim-lualine/lualine.nvim';
+  'romgrk/barbar.nvim';
 
   -- lsp, cmp, snip
   { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };

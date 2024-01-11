@@ -27,5 +27,4 @@ opt.cursorline = true
 opt.showcmd = true
 opt.termguicolors = true
 opt.mouse = ''
-
-vim.highlight.on_yank {higroup='IncSearch', timeout=1000}
+opt.colorcolumn = '100'
