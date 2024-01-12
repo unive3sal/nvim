@@ -2,7 +2,6 @@ local opt = vim.opt
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.g.barbar_auto_setup = false
 
 opt.number = true
 opt.relativenumber = true

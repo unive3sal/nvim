@@ -24,10 +24,20 @@ require('pckr').add{
   -- appearance
   'Shatur/neovim-ayu';
   'nvim-lualine/lualine.nvim';
-  'romgrk/barbar.nvim';
+  {
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons'},
+  };
+  {
+    'nvimdev/dashboard-nvim',
+    requires = {'kyazdani42/nvim-web-devicons'},
+  };
 
   -- lsp, cmp, snip
-  { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
+  {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+  };
   'neovim/nvim-lspconfig';
   'hrsh7th/cmp-nvim-lsp';
   'hrsh7th/cmp-buffer';
