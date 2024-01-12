@@ -17,6 +17,10 @@ end
 bootstrap_pckr()
 
 require('pckr').add{
+  -- file explore
+  'kyazdani42/nvim-web-devicons';
+  'kyazdani42/nvim-tree.lua';
+
   -- appearance
   'Shatur/neovim-ayu';
   'nvim-lualine/lualine.nvim';
@@ -32,10 +36,6 @@ require('pckr').add{
   'hrsh7th/nvim-cmp';
   'L3MON4D3/LuaSnip';
   'saadparwaiz1/cmp_luasnip';
-
-  -- file explore
-  'kyazdani42/nvim-web-devicons';
-  'kyazdani42/nvim-tree.lua';
 
   -- tabline & indent-blankline
   'crispgm/nvim-tabline';
@@ -53,11 +53,15 @@ require('pckr').add{
 
   -- git
   'lewis6991/gitsigns.nvim';
+
+  -- undo tree
+  {
+    'jiaoshijie/undotree',
+    requires = {'nvim-lua/plenary.nvim'},
+  };
 }
 
 require('autocmds')
-require('keymaps')
 require('options')
+require('keymaps')
 
------- setup devicons before other plugs in plugin/
-require'nvim-web-devicons'.setup {}

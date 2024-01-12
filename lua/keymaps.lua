@@ -32,9 +32,9 @@ map('n', '<leader>n', '<cmd>NvimTreeFindFile<cr>', default_opt)
 map('n',  '<leader>sw', '<cmd>ClangdSwitchSourceHeader<cr>', default_opt)
 
 ----------fzf---------
-map('n', '<leader>ff', function() require('fzf-lua').files() end, default_opt)
-map('n', '<leader>fg', function() require('fzf-lua').live_grep_glob() end, default_opt)
-map('n', '<leader>fo', function() require('fzf-lua').oldfiles() end, default_opt)
+map('n', '<leader>ff', require('fzf-lua').files, default_opt)
+map('n', '<leader>fg', require('fzf-lua').live_grep_glob, default_opt)
+map('n', '<leader>fo', require('fzf-lua').oldfiles, default_opt)
 
 ---------tabline--------
 -- Move to previous/next
@@ -74,6 +74,6 @@ map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', default_opt)
 map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', default_opt)
 map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', default_opt)
 
--- Other:
--- :BarbarEnable - enables barbar (enabled by default)
--- :BarbarDisable - very bad command, should never be used
+----------undotree---------
+map('n', '<leader>u', require('undotree').toggle, default_opt)
+
