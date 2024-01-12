@@ -58,3 +58,6 @@ require('pckr').add{
 require('autocmds')
 require('keymaps')
 require('options')
+
+------ setup devicons before other plugs in plugin/
+require'nvim-web-devicons'.setup {}
