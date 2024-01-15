@@ -1,3 +1,13 @@
+local img_file = io.open('./asciiart/two_swords.txt', 'r')
+local ascii_img = {}
+
+if img_file then
+  for line in img_file:lines() do
+    table.insert(ascii_img, line)
+  end
+  img_file:close()
+end
+
 require'dashboard'.setup {
   theme = 'hyper',
   config = {
@@ -29,10 +39,6 @@ require'dashboard'.setup {
     project = {
       action = 'FzfLua files ',
     },
-    footer = {
-    },
-    project = {
-      action = 'FzfLua files'
-    },
+    footer = ascii_img,
   },
 }
