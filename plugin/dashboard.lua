@@ -32,5 +32,8 @@ require'dashboard'.setup {
       --  key = 'e',
       --},
     },
+    project = {
+      action = 'FzfLua files'
+    },
   },
 }
