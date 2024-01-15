@@ -12,7 +12,7 @@ require'dashboard'.setup {
   theme = 'hyper',
   config = {
     week_header = {
-     enable = true,
+     enable = false,
     },
     shortcut = {
       {
@@ -35,6 +35,9 @@ require'dashboard'.setup {
         action = 'FzfLua live_grep_glob',
         key = 'g',
       },
+    },
+    packages = {
+      enable = true
     },
     project = {
       action = 'FzfLua files ',
