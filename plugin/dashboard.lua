@@ -25,12 +25,11 @@ require'dashboard'.setup {
         action = 'FzfLua live_grep_glob',
         key = 'g',
       },
-      --{
-      --  desc = ' Explore',
-      --  group = 'Number',
-      --  action = 'NvimTreeToggle',
-      --  key = 'e',
-      --},
+    },
+    project = {
+      action = 'FzfLua files ',
+    },
+    footer = {
     },
     project = {
       action = 'FzfLua files'
