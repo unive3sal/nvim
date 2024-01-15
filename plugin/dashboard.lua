@@ -12,7 +12,7 @@ require'dashboard'.setup {
   theme = 'hyper',
   config = {
     week_header = {
-     enable = false,
+     enable = true,
     },
     shortcut = {
       {
