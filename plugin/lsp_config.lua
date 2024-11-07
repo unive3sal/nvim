@@ -92,6 +92,9 @@ lspconfig.lua_ls.setup {
 lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false,
+      },
       imports = {
         granularity = {
           group = "module",
