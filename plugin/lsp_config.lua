@@ -44,11 +44,11 @@ local lspconfig = require('lspconfig')
 -- clangd
 lspconfig.clangd.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
   flags = {
     -- This will be the default in neovim 0.7+
     debounce_text_changes = 150,
   },
-  capabilities = capabilities,
   cmd = {
     'clangd',
     '--query-driver=/usr/bin/clang++*, \
@@ -66,6 +66,8 @@ lspconfig.clangd.setup {
 
 -- lua
 lspconfig.lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -90,6 +92,8 @@ lspconfig.lua_ls.setup {
 
 -- rust
 lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     ['rust-analyzer'] = {
       diagnostics = {
@@ -110,5 +114,27 @@ lspconfig.rust_analyzer.setup {
         enable = true
       },
     },
+  },
+}
+
+-- python
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    'pyright-langserver',
+    '--stdio',
+  },
+  filetypes = {
+    'python'
+  },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "openFilesOnly",
+        useLibraryCodeForTypes = true
+      }
+    }
   },
 }
