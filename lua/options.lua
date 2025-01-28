@@ -4,7 +4,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 opt.number = true
-opt.relativenumber = true
+opt.relativenumber = false
 opt.hlsearch = true
 opt.smartcase = true
 opt.ignorecase = true
