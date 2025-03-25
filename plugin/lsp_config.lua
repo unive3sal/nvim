@@ -61,7 +61,7 @@ lspconfig.clangd.setup {
     '--pch-storage=memory',
     -- '--log=verbose'
   },
-  filetypes = {"c", "cpp", "objc", "objcpp"}
+  filetypes = {"c", "cpp", "objc", "objcpp", "cuda", "proto"}
 }
 
 -- lua
