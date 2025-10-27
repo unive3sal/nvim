@@ -33,7 +33,7 @@ map('n',  '<leader>sw', '<cmd>ClangdSwitchSourceHeader<cr>', default_opt)
 
 ----------fzf---------
 map('n', '<leader>ff', require('fzf-lua').files, default_opt)
-map('n', '<leader>fg', require('fzf-lua').live_grep_glob, default_opt)
+map('n', '<leader>fg', require('fzf-lua').live_grep, default_opt)
 map('n', '<leader>fo', require('fzf-lua').oldfiles, default_opt)
 
 ---------tabline--------

@@ -32,7 +32,7 @@ require'dashboard'.setup {
       {
         desc = ' Grep',
         group = 'DiagnosticHint',
-        action = 'FzfLua live_grep_glob',
+        action = 'FzfLua live_grep',
         key = 'g',
       },
     },
