@@ -33,14 +33,89 @@ local capabilities =
   require('cmp_nvim_lsp')
   .default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
--- set default attributes for lsp
+-- set default capabilities for lsp
 vim.lsp.config('*', {
   capabilities = capabilities,
 })
 
+vim.lsp.config('clangd', {
+  cmd = {
+    'clangd',
+    '--query-driver=/usr/bin/clang++*, \
+                /usr/bin/g++*',
+    '--clang-tidy',
+    '--all-scopes-completion',
+    '--completion-style=detailed',
+    '--header-insertion-decorators',
+    '--header-insertion=iwyu',
+    '--pch-storage=memory',
+    -- '--log=verbose'
+  },
+  filetypes = {"c", "cpp", "objc", "objcpp", "cuda", "proto"},
+})
+
+vim.lsp.config('lua_ls', {
+  -- default lua_ls setting is empty,
+  -- for it should read from .luarc.json
+  settings = {
+    Lua = {},
+  },
+  -- config for nvim config dir
+  on_init = function(client)
+    if client.workspace_folders then
+      local path = client.workspace_folders[1].name
+      if
+        path ~= vim.fn.stdpath('config')
+        and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+      then
+        return
+      end
+    end
+
+    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most
+        -- likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Tell the language server how to find Lua modules same way as Neovim
+        -- (see `:h lua-module-load`)
+        path = {
+          'lua/?.lua',
+          'lua/?/init.lua',
+        },
+      },
+      -- Make the server aware of Neovim runtime files
+      workspace = {
+        checkThirdParty = false,
+        library = { vim.env.VIMRUNTIME },
+      },
+      -- formatter
+      format = {
+        enable = true,
+        -- Put format options here
+        -- NOTE: the value should be STRING!!
+        defaultConfig = {
+          indent_style = 'space',
+          indent_size = '2',
+        },
+      }
+    })
+  end,
+})
+
+vim.lsp.config('rust_analyzer', {
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false,
+      },
+    },
+  },
+})
+
 -- enable lsp 
-vim.lsp.enable('lua_ls_conf')
-vim.lsp.enable('ts_ls_conf')
-vim.lsp.enable('pyright_conf')
-vim.lsp.enable('rust_analyzer_conf')
-vim.lsp.enable('clangd_conf')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('pyright')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('clangd')
