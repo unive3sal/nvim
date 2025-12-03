@@ -127,9 +127,18 @@ vim.lsp.config('rust_analyzer', {
   },
 })
 
+vim.lsp.config('sqls', {
+  cmd = {
+    'sqls',
+    '-config',
+    vim.fn.getcwd() .. '/.sqls/config.yml',
+  },
+})
+
 -- enable lsp 
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('pyright')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('clangd')
+vim.lsp.enable('sqls')

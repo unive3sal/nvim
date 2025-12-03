@@ -74,4 +74,3 @@ require('pckr').add{
 require('autocmds')
 require('options')
 require('keymaps')
-
