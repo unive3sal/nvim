@@ -69,6 +69,15 @@ require('pckr').add{
     'jiaoshijie/undotree',
     requires = {'nvim-lua/plenary.nvim'},
   };
+
+  -- claude-code
+  {
+    'greggh/claude-code.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function ()
+      require('claude-code').setup()
+    end
+  };
 }
 
 require('autocmds')
