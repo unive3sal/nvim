@@ -72,11 +72,8 @@ require('pckr').add{
 
   -- claude-code
   {
-    'greggh/claude-code.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
-    config = function ()
-      require('claude-code').setup()
-    end
+    'coder/claudecode.nvim',
+    dependencies = { "folke/snacks.nvim" },
   };
 
   -- opencode
@@ -115,7 +112,7 @@ require('pckr').add{
       vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
       vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
     end,
-  }
+  };
 }
 
 require('autocmds')
