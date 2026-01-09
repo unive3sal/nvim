@@ -34,7 +34,7 @@ require('pckr').add{
   };
 
   -- lsp, cmp, snip
-  {
+                                                                               {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
   };
@@ -68,12 +68,6 @@ require('pckr').add{
   {
     'jiaoshijie/undotree',
     requires = {'nvim-lua/plenary.nvim'},
-  };
-
-  -- claude-code
-  {
-    'coder/claudecode.nvim',
-    dependencies = { "folke/snacks.nvim" },
   };
 
   -- opencode
