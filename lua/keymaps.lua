@@ -80,7 +80,7 @@ map('n', '<leader>u', require('undotree').toggle, default_opt)
 ----------opencode---------
 map({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
 map({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
-map({ "n", "t" }, "<C-/>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
+map({ "n", "t" }, "<C-d>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
 
 map({ "n", "x" }, "go",  function() return require("opencode").operator("@this ") end,        { expr = true, desc = "Add range to opencode" })
 map("n",          "goo", function() return require("opencode").operator("@this ") .. "_" end, { expr = true, desc = "Add line to opencode" })
