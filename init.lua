@@ -34,7 +34,7 @@ require('pckr').add{
   };
 
   -- lsp, cmp, snip
-                                                                               {
+  {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
   };
