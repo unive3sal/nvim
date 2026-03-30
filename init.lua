@@ -82,19 +82,46 @@ require('pckr').add{
     config = function()
       require('snacks').setup({
           input = {},
-          picker = {},
+          picker = {
+            actions = {
+              opencode_send = function(...) return require("opencode").snacks_picker_send(...) end,
+            },
+            win = {
+              input = {
+                keys = {
+                  ["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+                },
+              },
+            },
+          },
       })
 
       ---@type opencode.Opts
       vim.g.opencode_opts = {
-        -- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
-        provider = {
-          enabled = "tmux",
-          tmux = {
-            options = "-h -l 35%",
-          },
-        }
+        server = {
+          start = function()
+            local tmux = require("tmux.wrapper.tmux")
+            tmux.execute("split-window -h -p 35 'opencode --port'")
+          end,
+          stop = function()
+            local tmux = require("tmux.wrapper.tmux")
+            local panes = tmux.execute("list-panes -F '#{pane_title}'")
+            if panes:find("opencode") then
+              tmux.execute("kill-pane -t opencode")
+            end
+          end,
+          toggle = function()
+            local tmux = require("tmux.wrapper.tmux")
+            local panes = tmux.execute("list-panes -F '#{pane_title}'")
+            if panes:find("opencode") then
+              tmux.execute("select-pane -t opencode")
+            else
+              tmux.execute("split-window -h -p 35 'opencode --port'")
+            end
+          end,
+        },
       }
+
       -- Required for `opts.events.reload`.
       vim.o.autoread = true
     end,
