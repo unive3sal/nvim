@@ -96,28 +96,29 @@ require('pckr').add{
           },
       })
 
+      local opencode_cmd = 'opencode --port'
+      ---@type snacks.terminal.Opts
+      local snacks_terminal_opts = {
+        win = {
+          position = 'right',
+          enter = false,
+          on_win = function(win)
+            -- Set up keymaps and cleanup for an arbitrary terminal
+            require('opencode.terminal').setup(win.win)
+          end,
+        },
+      }
       ---@type opencode.Opts
       vim.g.opencode_opts = {
         server = {
           start = function()
-            local tmux = require("tmux.wrapper.tmux")
-            tmux.execute("split-window -h -p 35 'opencode --port'")
+            require('snacks.terminal').open(opencode_cmd, snacks_terminal_opts)
           end,
           stop = function()
-            local tmux = require("tmux.wrapper.tmux")
-            local panes = tmux.execute("list-panes -F '#{pane_title}'")
-            if panes:find("opencode") then
-              tmux.execute("kill-pane -t opencode")
-            end
+            require('snacks.terminal').get(opencode_cmd, snacks_terminal_opts):close()
           end,
           toggle = function()
-            local tmux = require("tmux.wrapper.tmux")
-            local panes = tmux.execute("list-panes -F '#{pane_title}'")
-            if panes:find("opencode") then
-              tmux.execute("select-pane -t opencode")
-            else
-              tmux.execute("split-window -h -p 35 'opencode --port'")
-            end
+            require('snacks.terminal').toggle(opencode_cmd, snacks_terminal_opts)
           end,
         },
       }
