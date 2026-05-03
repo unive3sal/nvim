@@ -77,15 +77,55 @@ map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', default_opt)
 ----------undotree---------
 map('n', '<leader>u', require('undotree').toggle, default_opt)
 
-----------opencode---------
-map({ "n", "x" }, "<C-a>", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask opencode" })
-map({ "n", "x" }, "<C-x>", function() require("opencode").select() end,                          { desc = "Execute opencode action…" })
-map({ "n", "t" }, "<C-q>", function() require("opencode").toggle() end,                          { desc = "Toggle opencode" })
+----------claudecode---------
+map("n", "<leader>a", "<nop>", {
+  desc = "AI/Claude Code",
+})
 
-map({ "n", "x" }, "go",  function() return require("opencode").operator("@this ") end,        { expr = true, desc = "Add range to opencode" })
-map("n",          "goo", function() return require("opencode").operator("@this ") .. "_" end, { expr = true, desc = "Add line to opencode" })
-map("n", "<S-C-u>", function() require("opencode").command("session.half.page.up") end,   { desc = "opencode half page up" })
-map("n", "<S-C-d>", function() require("opencode").command("session.half.page.down") end, { desc = "opencode half page down" })
--- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-map("n", "+", "<C-a>", { desc = "Increment", noremap = true })
-map("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
+map("n", "<leader>ac", "<cmd>ClaudeCode<cr>", {
+  desc = "Toggle Claude",
+})
+
+map("n", "<leader>af", "<cmd>ClaudeCodeFocus<cr>", {
+  desc = "Focus Claude",
+})
+
+map("n", "<leader>ar", "<cmd>ClaudeCode --resume<cr>", {
+  desc = "Resume Claude",
+})
+
+map("n", "<leader>aC", "<cmd>ClaudeCode --continue<cr>", {
+  desc = "Continue Claude",
+})
+
+map("n", "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", {
+  desc = "Select Claude model",
+})
+
+map("n", "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", {
+  desc = "Add current buffer",
+})
+
+map("v", "<leader>as", "<cmd>ClaudeCodeSend<cr>", {
+  desc = "Send to Claude",
+})
+
+-- Only for file tree / file explorer buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+  callback = function(event)
+    vim.keymap.set("n", "<leader>as", "<cmd>ClaudeCodeTreeAdd<cr>", {
+      buffer = event.buf,
+      desc = "Add file",
+    })
+  end,
+})
+
+-- Diff management
+map("n", "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", {
+  desc = "Accept diff",
+})
+
+map("n", "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", {
+  desc = "Deny diff",
+})
